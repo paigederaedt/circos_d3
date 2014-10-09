@@ -65,15 +65,20 @@ word_alpha_count_mat = []
 for word in word_array:
 	word_alpha_count_mat.append(CreateAlphaCountMatrix(word))
 
+
 #create matrix of word list arrays
 #initialize matrix of word arrays
-alpha_word_list_mat = [[[] for x in xrange(26)] for x in xrange(26)]]
+alpha_word_list_mat = [['meow' for x in xrange(26)] for x in xrange(26)]
 #loop through alpha word list matrix
 for row in range(0,26):
 	for col in range(0,26):
-		for word in word_array:
-			if word_alpha_count_mat[word[row][col]] > 0:
-				alpha_word_list_mat.append(word)
+		#initialize a temporary list to store words corresponding to each tuple
+		temp_word_list = []
+		for word in range(0,len(word_array)):
+			temp = word_alpha_count_mat[word]
+			if temp[row][col] > 0:
+				temp_word_list.append(word_array[word])
+		alpha_word_list_mat[row][col] = temp_word_list
 
 
 ## OUTPUT ##
